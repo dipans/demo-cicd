@@ -2,13 +2,8 @@ language: java
 
 jdk:
   - oraclejdk8
-  
 
-job:
-  include:
-    - stage: "Compile"
-      name: "Compile"
-      script: ./mvnw clean package -DskipTests
-    - stage: "Tests"
-      name: "Tests"
-      script: ./mvnw test
+script: ./mvnw clean install
+      
+notifications:
+  email: dipan.cs@gmail.com
