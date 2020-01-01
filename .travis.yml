@@ -1,9 +1,18 @@
 language: java
 
 jdk:
-  - oraclejdk8
+  - oraclejdk9
+  
 
-script: ./mvnw clean install
+job:
+  include:
+    - stage: "Compile"
+      name: "Compile"
+      script: ./mvnw clean package -DskipTests
+    - stage: "Tests"
+      name: "Tests"
+      script: ./mvnw test
+      
       
 notifications:
   email: dipan.cs@gmail.com
