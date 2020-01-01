@@ -9,12 +9,14 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableJpaRepositories(basePackages = "com.examle.democicd.repository")
-@PropertySource("integration-test.properties")
+@PropertySource("application-test.properties")
 @EnableTransactionManagement
+@ActiveProfiles("test")
 public class H2JpaConfig {
 	
 	@Autowired

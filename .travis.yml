@@ -1,0 +1,16 @@
+language: java
+
+jdk:
+  - oraclejdk8
+  
+
+job:
+  include:
+    - stage: "Compile"
+      name: "Compile"
+      script: ./mvnw clean package -DskipTests
+    - stage: "Tests"
+      name: "Tests"
+      script: ./mvnw test
+    - stage: "Dockerize"
+      name: "Building docker image"
