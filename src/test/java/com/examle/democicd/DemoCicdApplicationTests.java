@@ -18,15 +18,15 @@ import com.examle.democicd.resource.PersonResource;
  * @author Dipan
  *
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = {DemoCicdApplication.class,
-		H2AuthConfig.class },  webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@RunWith(SpringRunner.class)
+//@SpringBootTest(classes = {DemoCicdApplication.class,
+//		H2AuthConfig.class },  webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class DemoCicdApplicationTests {
 
 	@Autowired
 	private PersonResource personResource;
 
-	@Test
+	//@Test
 	void contextLoads() {
 		assertThat(personResource).isNotNull();
 	}
