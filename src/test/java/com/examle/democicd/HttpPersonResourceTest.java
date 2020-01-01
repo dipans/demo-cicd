@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.examle.democicd.model.Person;
@@ -20,6 +21,7 @@ import com.examle.democicd.repository.PersonRepository;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {DemoCicdApplication.class,
 		H2AuthConfig.class },  webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("test")
 public class HttpPersonResourceTest {
 
 	@LocalServerPort
