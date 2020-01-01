@@ -12,5 +12,3 @@ job:
     - stage: "Tests"
       name: "Tests"
       script: ./mvnw test
-    - stage: "Dockerize"
-      name: "Building docker image"
