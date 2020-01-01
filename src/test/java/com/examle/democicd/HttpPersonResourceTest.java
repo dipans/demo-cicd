@@ -46,7 +46,7 @@ public class HttpPersonResourceTest {
 	}
 	
 
-	@Test
+	//@Test
 	@Order(1)
 	public void getPersonsShouldReturnAllPerson() throws JSONException {
 		addPerson_ShoudldCreatePerson();
@@ -55,7 +55,7 @@ public class HttpPersonResourceTest {
 		JSONAssert.assertEquals("[{\"id\": 1,\"firstName\": \"Dipan\",\"lastName\": \"Sutradhar\"}]", response, false);
 	}
 	
-	@Test
+	//@Test
 	@Order(2)
 	public void getPersonShouldReturnDesiredPerson() throws JSONException {
 		Person person = restTemplate.getForObject("http://localhost:" + port + "/person/{id}", Person.class, "1");
