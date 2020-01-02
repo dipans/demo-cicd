@@ -2,15 +2,18 @@ language: java
 
 jdk:
   - openjdk8
-  
+
+stages:
+  - compile
+  - test  
 
 job:
   include:
-    - stage: "Compile"
+    - stage: compile
       name: "Compile"
       script: ./mvnw clean package -DskipTests
-    - stage: "Tests"
-      name: "Tests"
+    - stage: test
+      name: "Test"
       script: ./mvnw test
       
       
