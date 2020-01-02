@@ -5,7 +5,8 @@ jdk:
 
 stages:
   - compile
-  - test  
+  - test
+  - codecov 
 
 job:
   include:
@@ -15,6 +16,9 @@ job:
     - stage: test
       name: "Test"
       script: ./mvnw test
+    - stage: codecov
+      name: "Code Coverage"
+      script: ./mvnw cobertura:cobertura
       
       
 notifications:
