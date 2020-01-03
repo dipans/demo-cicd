@@ -5,7 +5,7 @@ services:
 - docker
 addons:
   sonarcloud:
-    organization: dipans
+    organization: "dipans"
     token:
       secure: "$SONAR_TOKEN"
 script:
