@@ -12,13 +12,12 @@ import com.examle.democicd.service.PersonService;
 @Service
 public class PersonServiceImpl implements PersonService {
 	
-	@Autowired
 	private PersonRepository personRepository;
 	
-	
-	/*public PersonServiceImpl(PersonRepository personRepository) {
+	@Autowired
+	public PersonServiceImpl(PersonRepository personRepository) {
 		this.personRepository = personRepository;
-	}*/
+	}
 
 	@Override
 	public Person getPersonById(long id) throws PersonNotFoundException {

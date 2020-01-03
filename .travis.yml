@@ -2,6 +2,17 @@ language: java
 
 jdk:
   - openjdk8
+  
+  
+addons:
+  sonarcloud:
+    organization: "dipans"
+    token:
+      secure:  travis encrypt 435d2cb0eb8e17fcb03713b12f720e4e23c77c38 #"**************************" # encrypted value of your token
+      
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=dipans_demo-cicd
 
 stages:
   - compile

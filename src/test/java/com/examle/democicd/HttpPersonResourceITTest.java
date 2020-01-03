@@ -2,10 +2,9 @@ package com.examle.democicd;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.h2.security.auth.H2AuthConfig;
 import org.json.JSONException;
+import org.junit.Test;
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +14,14 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.examle.democicd.config.H2JpaConfig;
 import com.examle.democicd.model.Person;
-import com.examle.democicd.repository.PersonRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {DemoCicdApplication.class,
-		H2AuthConfig.class },  webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+		H2JpaConfig.class },  webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-public class HttpPersonResourceTest {
+public class HttpPersonResourceITTest {
 
 	@LocalServerPort
 	private int port;
@@ -30,14 +29,12 @@ public class HttpPersonResourceTest {
 	@Autowired
 	private TestRestTemplate restTemplate;
 	
-	@Autowired
-	private PersonRepository personRepository;
-	
-	
 	public void addPerson_ShoudldCreatePerson() {
-		Person person = new Person();
-		person.setFirstName("Dipan");
-		person.setLastName("Sutradhar");	
+		Person person = Person
+						.builder()
+						.firstName("Dipan")
+						.lastName("Sutradhar")
+						.build();	
 		String url = "http://localhost:" + port + "/person";	
 		Person createdPerson = restTemplate.postForObject(url, person, Person.class);
 		assertThat(createdPerson.getId()).isNotZero();

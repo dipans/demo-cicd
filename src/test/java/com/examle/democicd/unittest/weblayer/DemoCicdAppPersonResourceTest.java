@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Rule;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -99,9 +99,6 @@ public class DemoCicdAppPersonResourceTest {
 	public void shouldThrow_WhenPersonNotAvailable() throws Exception {
 		
 		given(personService.getPersonById(Mockito.any(Long.class))).willThrow(PersonNotFoundException.class);
-		
-		exception.expect(PersonNotFoundException.class);
-		exception.expectMessage("Unknown person for id - 1");
 		
 		this.mockMvc.perform(get("/person/1"))
 					//.andDo(print())

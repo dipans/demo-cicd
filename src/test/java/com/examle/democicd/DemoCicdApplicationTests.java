@@ -2,8 +2,7 @@ package com.examle.democicd;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.h2.security.auth.H2AuthConfig;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,16 +17,15 @@ import com.examle.democicd.resource.PersonResource;
  * @author Dipan
  *
  */
-//@RunWith(SpringRunner.class)
-//@SpringBootTest(classes = {DemoCicdApplication.class,
-//		H2AuthConfig.class },  webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class DemoCicdApplicationTests {
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class DemoCicdApplicationTests {
 
 	@Autowired
 	private PersonResource personResource;
 
-	//@Test
-	void contextLoads() {
+	@Test
+	public void contextLoads() {
 		assertThat(personResource).isNotNull();
 	}
 

@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableJpaRepositories(basePackages = "com.examle.democicd.repository")
-@PropertySource("application-test.properties")
 @EnableTransactionManagement
 @ActiveProfiles("test")
 public class H2JpaConfig {
@@ -25,10 +24,10 @@ public class H2JpaConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
-        dataSource.setUrl(env.getProperty("jdbc.url"));
-        dataSource.setUsername(env.getProperty("jdbc.user"));
-        dataSource.setPassword(env.getProperty("jdbc.pass"));
+        dataSource.setDriverClassName("org.h2.Driver");
+        dataSource.setUrl("jdbc:h2:mem:db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"/*env.getProperty("jdbc.url")*/);
+        dataSource.setUsername("sa"/*env.getProperty("jdbc.user")*/);
+        dataSource.setPassword("sa"/*env.getProperty("jdbc.pass")*/);
  
         return dataSource;
     }
