@@ -7,12 +7,9 @@ addons:
   sonarcloud:
     organization: "dipans"
     token:
-      secure: "$SONAR_TOKEN"
+      secure: 50b467086340bb2b698715848d47326dbd8a9b54
 script:
 - "./mvnw clean install -B"
 - "./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.projectKey=dipans_demo-cicd"
 notifications:
   email: dipan.cs@gmail.com
-env:
-  global:
-  - secure: 7V8JDFAzHR+pO3n6GvGFZoE4C65aMGVyyOu95+5CBvudoyQO6MX6Mjj60TtLTf+sDg9TFrjtvOqA0nP3AAjKSPJ4KBeLHFN2pjbNVeHq/3yZgZ4zl5/H6E7mcr9veovSxOxBf2BzUUXdRuL3j+lvSlUz0yyXqizaS76Y1siNdud5ODl5ebNG2l/Jfx+wUV0nJ4jM87tIiUYo6Hs+e6u6gI7NTrYMxM0y+XMuZTObGGZwSukCjj9dKkd1M2jaRkhFkRyGJVqQ10Gb0Oh3cisrmXWfTp6ut2XTPDAMumxfKe2NH6FiLdpt+xVBCukn/gRidN+7krdHKkDn6uPrX74TwvEq0YvhuSr7R5yJQXyrC+d+nS0p1qKfV15r18VD+acrU7VWktys7+XUd53tkb02NrvU26TokDAzva7htJIqwFoKqx1vvpn82+ULciIAFfJ0ZAoam7ODgJiF2TkhtAeiDprUiyDfGKvlysAD3fYRTwN2MNgZ8bMYrt5vG5n5bR9S5FxbMlBmSHkcANPSOCLGoMt/UAvuiwhy85jJNO41sDh04fqAWwGCUcs9NqMpMnrXgdXnmcuiuG8h8KC8LHzKCRAYPyZWFi1q+xy6zBV/CugU8UeDw12AsrB+eZ37MylOMal6yvLUcZfb9HA/dtuGlnL07WJEd6jGomLovpCMYRs=
