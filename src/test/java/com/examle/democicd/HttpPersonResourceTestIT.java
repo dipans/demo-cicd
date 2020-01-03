@@ -22,29 +22,29 @@ import com.examle.democicd.repository.PersonRepository;
 @SpringBootTest(classes = {DemoCicdApplication.class,
 		H2AuthConfig.class },  webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-public class HttpPersonResourceTest {
+public class HttpPersonResourceTestIT {
 
 	@LocalServerPort
 	private int port;
 
 	@Autowired
 	private TestRestTemplate restTemplate;
-	
+
 	@Autowired
 	private PersonRepository personRepository;
-	
-	
+
+
 	public void addPerson_ShoudldCreatePerson() {
 		Person person = new Person();
 		person.setFirstName("Dipan");
-		person.setLastName("Sutradhar");	
-		String url = "http://localhost:" + port + "/person";	
+		person.setLastName("Sutradhar");
+		String url = "http://localhost:" + port + "/person";
 		Person createdPerson = restTemplate.postForObject(url, person, Person.class);
 		assertThat(createdPerson.getId()).isNotZero();
 		assertThat(createdPerson.getFirstName()).isEqualTo(person.getFirstName());
 		assertThat(createdPerson.getLastName()).isEqualTo(person.getLastName());
 	}
-	
+
 
 	@Test
 	@Order(1)
@@ -54,7 +54,7 @@ public class HttpPersonResourceTest {
 		String response = restTemplate.getForObject(uri, String.class);
 		JSONAssert.assertEquals("[{\"id\": 1,\"firstName\": \"Dipan\",\"lastName\": \"Sutradhar\"}]", response, false);
 	}
-	
+
 	@Test
 	@Order(2)
 	public void getPersonShouldReturnDesiredPerson() throws JSONException {

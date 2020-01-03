@@ -1,25 +1,23 @@
 language: java
 jdk:
-- openjdk8
-stages:
-- compile
-- test
-- codecov
-job:
-  include:
-  - stage: compile
-    name: Compile
-    script: "./mvnw clean package -DskipTests"
-  - stage: test
-    name: Test
-    script: "./mvnw test"
-  - stage: codecov
-    name: Code Coverage
-    script: "./mvnw cobertura:cobertura"
-after_success:
-- bash <(curl -s https://codecov.io/bash)
-notifications:
-  email: dipan.cs@gmail.com
+  - openjdk8
+
+services:
+  - docker
+
 env:
   global:
   - secure: ngSkNb0R2gskIToi5iEbRL6AYXdHYUOzObpX18S/sDGcWtaitXD9VR/NLbm1F9Ie0PjMXVsD+QahWaLzsUhF3H9Tak8+7lOHjSBNgZuSwii5n1IV8x3CUpkplrpMSmqgh1pLLI5ORWGpUeGTJDetqF2c453nPFVR3m6xA+WAsqdKgbkVUO8u6G78H3H9Xl7+F5ZOwAKb82q3egC8pv0zM+Xi87P9h91CBdfXluWNYguR01myVkkV/b3QrZEy0kdjmGUQHIaUMdgxPUv140ZCV2EaNoxqIrAxMJqYfAa4w7AF46wh9ku81r+uQuGotgh9l1yaeooFFF/G2ym9dxZeEkYJ44Okeu4MadtJ3jwRh+S7+oZFPWDzMX6k8WU9KEknwbpEXRnH7kWCGGgoym3k+ubGjdrc7BxKpHr8v9TCA1vuQ+uL32W+0m0aOmCWYjdelXEiV1wPTxb89pRwJJYzPXphVqjt7fMjB6TYQfXHYTzN3kbn2rsqWioZdoGaWdpE2tYR1IeyI4WNFpOCNuL2ES8D7sTeQp6IhA0lw3VqGWN48xGL6c2ULM6UO2w7oLBoqxK97EUAOdsCXZ9Qf8KOyvvLtLYzzXukP08rMkmkUZGdyxBeG8EqCuraD+CS5/NpM81idPuqKmB4afLZ5WCQl01dANHVejwUwOlhB7c8etc=
+
+addons:
+  sonarcloud:
+      organization: "dipans"
+      token:
+          secure: $SONAR_TOKEN
+
+script:
+  - ./mvnw clean install -B
+  - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+
+notifications:
+  email: dipan.cs@gmail.com
