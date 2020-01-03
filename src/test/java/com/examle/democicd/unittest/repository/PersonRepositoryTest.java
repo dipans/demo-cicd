@@ -61,12 +61,6 @@ public class PersonRepositoryTest {
 		
 		List<Person> savedPersons = personRepository.saveAll(persons);
 		assertThat(savedPersons.size()).isNotZero();
-		/*Optional<Person> readPerson = personRepository.findById(person.getId());
-		assertThat(readPerson).isNotNull();
-		assertThat(readPerson.isPresent()).isTrue();
-		assertThat(readPerson.get().getId()).isEqualTo(savedPerson.getId());
-		assertThat(readPerson.get().getFirstName()).isEqualTo(savedPerson.getFirstName());
-		assertThat(readPerson.get().getLastName()).isEqualTo(savedPerson.getLastName());*/
 		
 	}
 	
