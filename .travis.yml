@@ -10,8 +10,8 @@ addons:
     token:
       secure: 50b467086340bb2b698715848d47326dbd8a9b54
       
+
 script:
-  script:
   - "./mvnw clean install -B"
   - "./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.projectKey=dipans_demo-cicd"
   
