@@ -1,24 +1,19 @@
 language: java
 jdk:
-  - openjdk8
-
+- openjdk8
 services:
-  - docker
-
-env:
-  global:
-  - secure: ngSkNb0R2gskIToi5iEbRL6AYXdHYUOzObpX18S/sDGcWtaitXD9VR/NLbm1F9Ie0PjMXVsD+QahWaLzsUhF3H9Tak8+7lOHjSBNgZuSwii5n1IV8x3CUpkplrpMSmqgh1pLLI5ORWGpUeGTJDetqF2c453nPFVR3m6xA+WAsqdKgbkVUO8u6G78H3H9Xl7+F5ZOwAKb82q3egC8pv0zM+Xi87P9h91CBdfXluWNYguR01myVkkV/b3QrZEy0kdjmGUQHIaUMdgxPUv140ZCV2EaNoxqIrAxMJqYfAa4w7AF46wh9ku81r+uQuGotgh9l1yaeooFFF/G2ym9dxZeEkYJ44Okeu4MadtJ3jwRh+S7+oZFPWDzMX6k8WU9KEknwbpEXRnH7kWCGGgoym3k+ubGjdrc7BxKpHr8v9TCA1vuQ+uL32W+0m0aOmCWYjdelXEiV1wPTxb89pRwJJYzPXphVqjt7fMjB6TYQfXHYTzN3kbn2rsqWioZdoGaWdpE2tYR1IeyI4WNFpOCNuL2ES8D7sTeQp6IhA0lw3VqGWN48xGL6c2ULM6UO2w7oLBoqxK97EUAOdsCXZ9Qf8KOyvvLtLYzzXukP08rMkmkUZGdyxBeG8EqCuraD+CS5/NpM81idPuqKmB4afLZ5WCQl01dANHVejwUwOlhB7c8etc=
-
+- docker
 addons:
   sonarcloud:
-      organization: "dipans"
-      token:
-          secure: $SONAR_TOKEN
-
+    organization: dipans
+    token:
+      secure: "$SONAR_TOKEN"
 script:
-  - ./mvnw clean install -B
-  - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
-  - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.projectKey=dipans_demo-cicd
-
+- "./mvnw clean install -B"
+- "./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar"
+- "./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.projectKey=dipans_demo-cicd"
 notifications:
   email: dipan.cs@gmail.com
+env:
+  global:
+  - secure: 7V8JDFAzHR+pO3n6GvGFZoE4C65aMGVyyOu95+5CBvudoyQO6MX6Mjj60TtLTf+sDg9TFrjtvOqA0nP3AAjKSPJ4KBeLHFN2pjbNVeHq/3yZgZ4zl5/H6E7mcr9veovSxOxBf2BzUUXdRuL3j+lvSlUz0yyXqizaS76Y1siNdud5ODl5ebNG2l/Jfx+wUV0nJ4jM87tIiUYo6Hs+e6u6gI7NTrYMxM0y+XMuZTObGGZwSukCjj9dKkd1M2jaRkhFkRyGJVqQ10Gb0Oh3cisrmXWfTp6ut2XTPDAMumxfKe2NH6FiLdpt+xVBCukn/gRidN+7krdHKkDn6uPrX74TwvEq0YvhuSr7R5yJQXyrC+d+nS0p1qKfV15r18VD+acrU7VWktys7+XUd53tkb02NrvU26TokDAzva7htJIqwFoKqx1vvpn82+ULciIAFfJ0ZAoam7ODgJiF2TkhtAeiDprUiyDfGKvlysAD3fYRTwN2MNgZ8bMYrt5vG5n5bR9S5FxbMlBmSHkcANPSOCLGoMt/UAvuiwhy85jJNO41sDh04fqAWwGCUcs9NqMpMnrXgdXnmcuiuG8h8KC8LHzKCRAYPyZWFi1q+xy6zBV/CugU8UeDw12AsrB+eZ37MylOMal6yvLUcZfb9HA/dtuGlnL07WJEd6jGomLovpCMYRs=
