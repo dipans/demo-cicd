@@ -6,9 +6,9 @@ pipeline {
         }
     }
     stages {
-        stage('Setup') {
+        stage('Build') {
             steps {
-                sh 'mvn --version'
+                sh './mvnw clean install -B'
             }
         }
     }
